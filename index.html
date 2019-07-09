@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>YA-Maps Reviews</title>
+    <!--[if IE]>
+     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://api-maps.yandex.ru/2.0-stable/?apikey=756cb2c8-91e3-4d63-ab83-27c5ca975ef1&load=package.geoObjects,package.standard&lang=ru-RU" type="text/javascript"> </script>
+    <script src="script.js"></script>
+
+    <style>
+        html {
+             overflow:  hidden; 
+        }
+
+        #objects-map {
+            width:100%;
+            height:100%;
+        }
+        .popup-wrapper {
+            display: none;
+            width: 380px;
+            font-family: sans-serif;
+        }
+        .popup-content {
+            border-radius: 0 0 10px 10px;
+            background: #fff;
+        }
+        .popup-form, .popup-header, .review-block {
+            padding: 16px;
+        }
+        .popup-header {
+            border-radius: 10px 10px 0 0;
+            background-color: #ff8663;
+            height: 12px;
+            clear: both;
+            font-size: 12px;
+        }
+        .form-title {
+            color: #ff8663;
+            text-transform: uppercase;
+        }
+        .location-icon {
+            float: left;
+        }
+        .close-icon {
+            float: right;
+        }
+
+        .address {
+            margin-left: 5px;
+            color: #fff;
+            /*margin: 0 auto;*/
+        }
+        input, textarea {
+            border-radius: 10px;
+            margin-bottom: 8px;
+            padding: 10px;
+            width: 93%;
+        }
+        textarea {
+            resize: none;
+        }
+        button[type="submit"] {
+            cursor: pointer;
+            float: right;
+            background-color: #ff8663;
+            color: #fff;
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+        button[type="submit"]:hover {
+            background: #ff8663d6;
+        }
+        html, body {
+            height: 100%;
+            background: #0000004d;
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .review-list {
+            padding: 0;
+            list-style-type: none;
+        }
+        .review-name, .form-title{
+            font-weight: 700;
+        }
+        .review-place, .review-date {
+            color: #9e9e9e;
+        }
+        .close-icon {
+            cursor: pointer;
+        }
+        .review-list li span {
+            margin: 0 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="objects-map"></div>
+
+    <div id="review-popup" class="popup-wrapper">
+        <div class="popup-header">
+            <span class="location-icon">
+                <img src="img/location.png" alt="location">
+            </span>
+            <span class="address">
+                Невский проспект, 9
+            </span>
+            <span class="close-icon">
+                 <img src="img/close.png" alt="close">
+            </span>
+        </div>
+        <div class="popup-content">
+            <div class="review-block">
+                <p>Отзывов пока нет..</p>
+            </div>
+            <div class="popup-form-wrapper">
+                <form id="popup-form" class="popup-form">
+                    <div class="form-content">
+                        <p class="form-title">Ваш отзыв:</p>
+                        <input id="latitude" name="latitude" type="hidden">
+                        <input id="longitude" name="longitude" type="hidden">
+                        <input name="name" value="" placeholder="Ваше имя">
+                        <input name="place" value="" placeholder="Укажите место">
+                        <textarea placeholder="Поделитесь впечатлениями" name="comment"></textarea>
+                        <br>
+                        <button type="submit">Добавить</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
